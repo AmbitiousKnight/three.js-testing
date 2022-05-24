@@ -1,6 +1,7 @@
 import './style.css'
 import * as THREE from 'three';
 import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls'
+import { Scene } from 'three';
 
 const scene = new THREE.Scene();
 
@@ -47,6 +48,18 @@ Array(200).fill().forEach(addStar)
 
 const spaceTexture = new THREE.TextureLoader().load('space.jpg')
 scene.background = spaceTexture;
+
+// Avatar
+
+const jeffTexture = new THREE.TextureLoader().load('jeff.png')
+const jeff = new THREE.Mesh(
+  new THREE.BoxGeometry(3, 3, 3),
+  new THREE.MeshBasicMaterial({map: jeffTexture})
+)
+
+scene.add(jeff)
+
+// 12:05 video
 
 function animate() {
   requestAnimationFrame(animate);
